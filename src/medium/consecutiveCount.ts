@@ -14,5 +14,17 @@ export const getConsecutiveItems = (
   items: string | number,
   key: string | number
 ) => {
-  return false;
+  let max = 0;
+  let curMax = 0;
+  const strigifiedItems = `${items}`;
+  for (let i = 0; i < strigifiedItems.split("").length; i++) {
+    if (strigifiedItems[i] == key) {
+      curMax++;
+    } else {
+      curMax = 0;
+    }
+
+    max = Math.max(max, curMax);
+  }
+  return max;
 };

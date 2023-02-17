@@ -7,5 +7,28 @@
 export const moveZeros = (
   arr: (string | number | boolean | null | object | Array<[]>)[]
 ) => {
-  return false;
+  let i = 0;
+  let j = 1;
+  while (j < arr.length) {
+    if (arr[i] !== 0) {
+      i++;
+    } else if (arr[j] !== 0 && arr[i] === 0) {
+      arr[i] = arr[j];
+      arr[j] = 0;
+      i++;
+    }
+    j++;
+  }
+  return arr;
 };
+
+// Alternate Solution
+// export const moveZeros = (
+//   arr: (string | number | boolean | null | object | Array<[]>)[]
+// ) => {
+//   const filteredArray = arr.filter((x) => x !== 0);
+//   return [
+//     ...filteredArray,
+//     ...Array(arr.length - filteredArray.length).fill(0),
+//   ];
+// };
